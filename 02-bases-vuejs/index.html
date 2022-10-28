@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue.Js Intro</title>
+    <!-- Importante para que renderize rapido -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     <!-- Control Absoluto apartir de este div -->
     <div id="myApp">
-        <h1> Hola Mundo</h1>
-        <p>Desde index.html</p>
+        <h1>Quotes {{ newQuote }}</h1>
+        <input
+          type="text"
+          v-model="newQuote"
+          v-on:keypress="addQuote">
+
+        <p>{{ message }}</p>
+        <blockquote> - {{ author }}</blockquote>
+        <h1>Frases celebres de programación</h1>
+        <ul>
+            <li v-for="frase, index in frases">{{ index }} {{frase.quote }}</li>
+        </ul>
+        <h1>Destrocurado vfor</h1>
+        <ul>
+            <li v-for="{ quote }, index in frases">{{index + 1}} {{ quote }}</li>
+        </ul>
+         <br>
+         <br>
+        <button v-on:click="changeQuote()" >
+            Change quote
+        </button>
+
     </div>
     <!-- Control Absoluto de Vue -->
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
