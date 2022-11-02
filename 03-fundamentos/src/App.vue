@@ -1,8 +1,8 @@
 <template>
-
   <div>
       <img alt="Vue logo" src="./assets/logo.png">
-      <Counter />
+      <Counter title="Entraron"/>
+      <Counter title="Salieron"/>
   </div>
 
 </template>
