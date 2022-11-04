@@ -3,20 +3,19 @@
       <h2>{{ customTitle }}</h2>
     <p>{{ counter }} Contador: {{ squareCounter }}</p>
     <p>{{ counter }} Contador: {{ squareCounter }}</p>
-    <button @click="sumarCounter()">+ 1</button>
+    <button @click="sumarCounter()">+ 1</button> <!-- @ == v-on -->
     <button v-on:click="restarCounter()">- 1</button>
   </div>
 </template>
 
 <script>
-import { title } from 'process';
 
 export default {
-    props: ['title'], // Tenemos acceso al título
+    props: ['title', 'start'], // Tenemos acceso al título
     name: 'Contador',
     data() {
         return {
-            counter: 5
+            counter: this.start
         }
     },
     methods: {
@@ -38,7 +37,7 @@ export default {
             return this.counter * this.counter
         },
         customTitle(){
-            return this.title ? this.title : 'Counter'
+            return this.title ||  'Counter'
         }
     }
 }
